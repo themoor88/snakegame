@@ -11,14 +11,39 @@ $(document).ready(function(){
   ctx.strokeStyle = "black";
   ctx.strokeRect(0, 0, w, h);
 
-  drawSnake();
+  var snakeArray = [];
+
+  // Let's start the game
+  initiateGame();
+  function initiateGame() {
+    drawSnake();
+    paintSnake();
+  }
+
   // Drawing the snake
   function drawSnake() {
     var snakeLength = 5;
-    var snakeArray = [];
 
+    // Using a for loop to push x and y coordinates
     for (var i = snakeLength - 1; i >= 0; i--) {
       snakeArray.push({x: i, y: 0})
     };
   }
+
+  function paintSnake() {
+    // The cell width of each square
+    var cw = 10;
+
+    // A for loop to render blue squares for each element in the snakeArray
+    for (var i = 0; i < snakeArray.length; i++) {
+      var cell = snakeArray[i];
+
+      ctx.fillStyle = "blue";
+      ctx.fillRect(cell.x * cw, cell.y * cw, cw, cw);
+      ctx.strokeStyle = "white";
+      ctx.strokeRect(cell.x * cw, cell.y * cw, cw, cw)
+    };
+  }
+
+
 });
