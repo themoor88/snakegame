@@ -45,5 +45,6 @@ $(document).ready(function(){
     };
   }
 
+  gameLoop = setInterval(paintSnake, 60);
 
 });
